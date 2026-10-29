@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="zh-Hans">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<title>拾光 支持 · Shiguang Support</title>
-<meta name="description" content="拾光（Shiguang）的隐私政策：开发者不收集任何数据，照片在设备上分析，不会被上传。">
+<title>Shiguang Support</title>
+<meta name="description" content="Shiguang support: frequently asked questions about photos, albums, narration, Large Print and exports.">
 <style>
   :root {
     --paper: #f7f2ea;
@@ -60,8 +60,17 @@
   }
   nav.lang a:hover { border-color: var(--accent); color: var(--accent); }
 
+  .lang-picker { margin-top: 24px; display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .lang-picker label { color: var(--ink-soft); font-size: 0.95rem; }
+  .lang-picker select {
+    font: inherit; font-size: 0.95rem; color: var(--ink); background: var(--card);
+    border: 1px solid var(--rule); border-radius: 999px; padding: 7px 14px;
+  }
+  .lang-picker select:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .lang-section[hidden] { display: none; }
+
   section.policy { margin-top: 24px; }
-  section.policy + section.policy { margin-top: 72px; padding-top: 48px; border-top: 1px solid var(--rule); }
+  section.policy:not([hidden]) + section.policy:not([hidden]) { margin-top: 72px; padding-top: 48px; border-top: 1px solid var(--rule); }
 
   h1 { font-size: 1.85rem; line-height: 1.3; margin: 0 0 8px; }
   .meta { color: var(--ink-soft); font-size: 0.875rem; letter-spacing: 0.06em; margin: 0 0 28px; }
@@ -98,7 +107,7 @@
   }
   @media print {
     body { background: #fff; color: #000; }
-    nav.lang { display: none; }
+    nav.lang, .lang-picker { display: none; }
     .summary { box-shadow: none; }
   }
 </style>
@@ -107,10 +116,25 @@
 <main>
 <header class="top">
   <p class="mark serif">拾光<small>Shiguang</small></p>
-  <nav class="lang" aria-label="语言 / Language"><a href="#zh">简体中文</a><a href="#en">English</a></nav>
+  <div class="lang-picker">
+    <label for="lang-select">Language</label>
+    <select id="lang-select" aria-label="Language">
+      <option value="en">English</option>
+      <option value="zh-Hans">简体中文</option>
+      <option value="zh-Hant">繁體中文</option>
+      <option value="ja">日本語</option>
+      <option value="ko">한국어</option>
+      <option value="de">Deutsch</option>
+      <option value="fr">Français</option>
+      <option value="es">Español</option>
+      <option value="pt-BR">Português (Brasil)</option>
+      <option value="pt-PT">Português (Portugal)</option>
+      <option value="ru">Русский</option>
+    </select>
+  </div>
 </header>
 
-<section class="policy" id="zh" lang="zh-Hans">
+<section class="policy lang-section" id="zh" data-lang="zh-Hans" lang="zh-Hans" hidden>
   <h1>支持</h1>
   <p class="meta"><span>联系方式：<a href="mailto:stahere@icloud.com">stahere@icloud.com</a></span></p>
   <p>遇到问题、有建议，或者做出了一本喜欢的相册，都欢迎写信给我们。写信时附上设备型号和 iOS 版本，能帮我们更快找到原因。</p>
@@ -134,7 +158,7 @@
   <p>可以。删除的相册会在书架底部的「最近删除」里保留 30 天。</p>
 </section>
 
-<section class="policy" id="en" lang="en">
+<section class="policy lang-section" id="en" data-lang="en" lang="en">
   <h1>Support</h1>
   <p class="meta"><span>Contact: <a href="mailto:stahere@icloud.com">stahere@icloud.com</a></span></p>
   <p>If something doesn’t work, you have a suggestion, or you made an album you love, write to us. Including your device model and iOS version helps us find the cause faster.</p>
@@ -158,9 +182,249 @@
   <p>Yes. Deleted albums stay in Recently Deleted at the bottom of the shelf for 30 days.</p>
 </section>
 
+<section class="policy lang-section" id="zh-Hant" data-lang="zh-Hant" lang="zh-Hant" hidden>
+  <h1>支援</h1>
+  <p class="meta"><span>聯絡方式：<a href="mailto:stahere@icloud.com">stahere@icloud.com</a></span></p>
+  <p>遇到問題、有建議，或做出一本喜歡的相冊，都歡迎寫信給我們。寫信時附上裝置型號與 iOS 版本，能幫我們更快找到原因。</p>
+  <h2>常見問題</h2>
+  <h3>我的照片會被上傳嗎？</h3>
+  <p>不會。照片的辨識分析與語音聽寫都在裝置上完成，拾光沒有伺服器，也不收集任何資料。為了顯示地名，只會把照片的大約座標傳送給 Apple 的地圖服務。詳見<a href="../privacy/">隱私權政策</a>。</p>
+  <h3>為什麼看不到我的照片？</h3>
+  <p>拾光需要存取照片圖庫。請在「設定」&gt;「隱私權與安全性」&gt;「照片」&gt;「拾光」中選擇「完整存取」或選取照片。沒有授權時，仍可以翻閱內建的範例相冊。</p>
+  <h3>相冊會佔用很多空間嗎？</h3>
+  <p>不會。相冊只記錄照片在圖庫中的位置，不會複製原圖。刪除相冊時，照片仍保留在「照片」App 中。</p>
+  <h3>如何讓相冊自動加入新照片？</h3>
+  <p>從智慧分類、足跡、「那年今日」或 iCloud 共享相簿建立相冊時，開啟「自動加入新照片」。之後拍攝（或家人加入共享相簿）的照片會自動加入為新頁面。</p>
+  <h3>老照片與口述需要什麼？</h3>
+  <p>掃描需要相機，口述需要麥克風。在支援離線聽寫的裝置上，講述會在本機轉成文字；不支援時只會儲存錄音，可以手動輸入文字。錄音只保存在這台裝置上。</p>
+  <h3>如何讓長輩使用大字翻閱？</h3>
+  <p>翻開任何一本相冊，點右上角的「更多」，選擇「大字翻閱」。輕點左右兩側翻頁，點左上角的叉號回到標準翻閱。</p>
+  <h3>如何匯出或沖印？</h3>
+  <p>在相冊裡點「更多」&gt;「匯出」，可以選擇影片或 PDF（6 × 9 英寸，可直接沖印成相片書）。</p>
+  <h3>刪除的相冊能找回嗎？</h3>
+  <p>可以。刪除的相冊會在書架底部的「最近刪除」中保留 30 天。</p>
+</section>
+
+<section class="policy lang-section" id="ja" data-lang="ja" lang="ja" hidden>
+  <h1>サポート</h1>
+  <p class="meta"><span>お問い合わせ：<a href="mailto:stahere@icloud.com">stahere@icloud.com</a></span></p>
+  <p>うまくいかないとき、ご提案、お気に入りのアルバムができたときは、お気軽にメールしてください。端末の機種と iOS のバージョンを添えていただくと、原因を早く特定できます。</p>
+  <h2>よくある質問</h2>
+  <h3>写真はアップロードされますか？</h3>
+  <p>いいえ。写真の解析と音声の文字起こしはすべて端末上で行われます。Shiguang にサーバーはなく、データも収集しません。地名を表示するため、写真のおおよその位置情報だけを Apple の地図サービスに送信します。詳しくは<a href="../privacy/">プライバシーポリシー</a>をご覧ください。</p>
+  <h3>写真が表示されないのはなぜですか？</h3>
+  <p>Shiguang は写真ライブラリへのアクセスが必要です。「設定」&gt;「プライバシーとセキュリティ」&gt;「写真」&gt;「Shiguang」で「フルアクセス」を選ぶか、写真を選択してください。アクセスを許可しなくても、内蔵のサンプルアルバムは閲覧できます。</p>
+  <h3>アルバムは容量を多く使いますか？</h3>
+  <p>いいえ。アルバムは写真のコピーではなく、ライブラリ内の写真を参照します。アルバムを削除しても、写真は「写真」App に残ります。</p>
+  <h3>アルバムに新しい写真を自動で追加するには？</h3>
+  <p>スマートカテゴリ、場所、「今日の数年前」、iCloud 共有アルバムからアルバムを作るときに「新しい写真を自動で追加」をオンにします。あとで撮った写真（家族が共有アルバムに追加した写真）が新しいページになります。</p>
+  <h3>古い写真とナレーションには何が必要ですか？</h3>
+  <p>スキャンにはカメラ、ナレーションにはマイクを使います。オフライン文字起こしに対応した端末では、語りが端末上で文字になります。非対応の場合は録音だけを保存し、文字は手入力できます。録音はこの端末にのみ保存されます。</p>
+  <h3>祖父母向けの大きな文字表示にするには？</h3>
+  <p>アルバムを開き、右上の「その他」から「大きな文字」を選びます。左右をタップしてページをめくり、左上の X で通常表示に戻ります。</p>
+  <h3>アルバムを書き出し・印刷するには？</h3>
+  <p>アルバムで「その他」&gt;「書き出し」を選び、ビデオまたは PDF（6 × 9 インチ、フォトブックとして印刷可能）を選びます。</p>
+  <h3>削除したアルバムは戻せますか？</h3>
+  <p>はい。削除したアルバムは、本棚下部の「最近削除した項目」に 30 日間残ります。</p>
+</section>
+
+<section class="policy lang-section" id="ko" data-lang="ko" lang="ko" hidden>
+  <h1>지원</h1>
+  <p class="meta"><span>문의: <a href="mailto:stahere@icloud.com">stahere@icloud.com</a></span></p>
+  <p>문제가 있거나 제안이 있거나 마음에 드는 앨범을 만들었다면 언제든 메일을 보내 주세요. 기기 모델과 iOS 버전을 함께 적어 주시면 원인을 더 빨리 찾을 수 있습니다.</p>
+  <h2>자주 묻는 질문</h2>
+  <h3>사진이 업로드되나요?</h3>
+  <p>아니요. 사진 분석과 음성 받아쓰기는 모두 기기에서 이루어집니다. Shiguang에는 서버가 없으며 어떤 데이터도 수집하지 않습니다. 장소 이름을 표시하기 위해 사진의 대략적인 좌표만 Apple 지도 서비스로 전송합니다. 자세한 내용은 <a href="../privacy/">개인정보 처리방침</a>을 참고하세요.</p>
+  <h3>사진이 보이지 않는 이유는 무엇인가요?</h3>
+  <p>Shiguang은 사진 보관함 접근 권한이 필요합니다. 설정 &gt; 개인정보 보호 및 보안 &gt; 사진 &gt; Shiguang에서 전체 접근을 선택하거나 사진을 선택하세요. 권한이 없어도 내장된 샘플 앨범은 볼 수 있습니다.</p>
+  <h3>앨범이 공간을 많이 차지하나요?</h3>
+  <p>아니요. 앨범은 사진을 복사하지 않고 보관함의 사진을 가리킵니다. 앨범을 삭제해도 사진은 사진 앱에 남습니다.</p>
+  <h3>앨범에 새 사진을 자동으로 추가하려면?</h3>
+  <p>스마트 카테고리, 장소, 오늘의 추억, iCloud 공유 앨범에서 앨범을 만들 때 '새 사진 자동 추가'를 켜세요. 나중에 찍은 사진(또는 가족이 공유 앨범에 추가한 사진)이 새 페이지로 추가됩니다.</p>
+  <h3>오래된 사진과 내레이션에는 무엇이 필요한가요?</h3>
+  <p>스캔에는 카메라, 내레이션에는 마이크가 필요합니다. 오프라인 받아쓰기를 지원하는 기기에서는 이야기가 기기에서 텍스트로 변환됩니다. 지원하지 않으면 녹음만 저장되고 텍스트는 직접 입력할 수 있습니다. 녹음은 이 기기에만 저장됩니다.</p>
+  <h3>어르신을 위해 큰 글씨로 보려면?</h3>
+  <p>아무 앨범이나 열고 오른쪽 위의 '더 보기'에서 '큰 글씨'를 선택하세요. 양쪽을 탭해 페이지를 넘기고 왼쪽 위 X를 탭하면 일반 보기로 돌아갑니다.</p>
+  <h3>앨범을 내보내거나 인쇄하려면?</h3>
+  <p>앨범에서 '더 보기' &gt; '내보내기'를 선택하고 비디오 또는 PDF(6 × 9인치, 포토북으로 인쇄 가능)를 선택하세요.</p>
+  <h3>삭제한 앨범을 되살릴 수 있나요?</h3>
+  <p>네. 삭제한 앨범은 책장 아래의 '최근 삭제된 항목'에 30일 동안 보관됩니다.</p>
+</section>
+
+<section class="policy lang-section" id="de" data-lang="de" lang="de" hidden>
+  <h1>Support</h1>
+  <p class="meta"><span>Kontakt: <a href="mailto:stahere@icloud.com">stahere@icloud.com</a></span></p>
+  <p>Wenn etwas nicht funktioniert, du einen Vorschlag hast oder ein Album erstellt hast, das dir gefällt, schreib uns. Mit Gerätemodell und iOS-Version finden wir die Ursache schneller.</p>
+  <h2>Häufige Fragen</h2>
+  <h3>Werden meine Fotos hochgeladen?</h3>
+  <p>Nein. Fotoanalyse und Sprachtranskription erfolgen auf deinem Gerät. Shiguang hat keine Server und sammelt keine Daten. Um Ortsnamen anzuzeigen, werden nur ungefähre Fotokoordinaten an Apples Kartendienst gesendet. Siehe <a href="../privacy/">Datenschutzerklärung</a>.</p>
+  <h3>Warum sehe ich meine Fotos nicht?</h3>
+  <p>Shiguang benötigt Zugriff auf deine Fotomediathek. Gehe zu Einstellungen &gt; Datenschutz &amp; Sicherheit &gt; Fotos &gt; Shiguang und wähle Vollständiger Zugriff oder wähle Fotos aus. Ohne Zugriff kannst du trotzdem das mitgelieferte Beispielalbum lesen.</p>
+  <h3>Nehmen Alben viel Speicherplatz ein?</h3>
+  <p>Nein. Alben verweisen auf Fotos in deiner Mediathek, statt sie zu kopieren. Wenn du ein Album löschst, bleiben deine Fotos in der Fotos-App.</p>
+  <h3>Wie fügen Alben automatisch neue Fotos hinzu?</h3>
+  <p>Wenn du ein Album aus einer smarten Kategorie, einem Ort, „An diesem Tag“ oder einem geteilten iCloud-Album erstellst, aktiviere „Neue Fotos automatisch hinzufügen“. Später aufgenommene Fotos (oder von der Familie zum geteilten Album hinzugefügte) werden zu neuen Seiten.</p>
+  <h3>Was brauchen Alte Fotos &amp; Erzählung?</h3>
+  <p>Zum Scannen wird die Kamera, für die Erzählung das Mikrofon verwendet. Auf Geräten mit Offline-Transkription wird die Geschichte auf dem Gerät zu Text; sonst wird nur die Aufnahme gespeichert und du kannst den Text eingeben. Aufnahmen bleiben auf diesem Gerät.</p>
+  <h3>Wie richte ich Großdruck für Großeltern ein?</h3>
+  <p>Öffne ein beliebiges Album, tippe oben rechts auf Mehr und wähle Großdruck. Tippe links oder rechts, um umzublättern; tippe auf das X, um zur normalen Ansicht zurückzukehren.</p>
+  <h3>Wie exportiere oder drucke ich ein Album?</h3>
+  <p>Tippe in einem Album auf Mehr &gt; Exportieren und wähle Video oder PDF (6 × 9 Zoll, druckfertig als Fotobuch).</p>
+  <h3>Kann ich ein gelöschtes Album wiederherstellen?</h3>
+  <p>Ja. Gelöschte Alben bleiben 30 Tage lang unter „Zuletzt gelöscht“ am unteren Rand des Regals.</p>
+</section>
+
+<section class="policy lang-section" id="fr" data-lang="fr" lang="fr" hidden>
+  <h1>Assistance</h1>
+  <p class="meta"><span>Contact : <a href="mailto:stahere@icloud.com">stahere@icloud.com</a></span></p>
+  <p>Si quelque chose ne fonctionne pas, si vous avez une suggestion ou si vous avez créé un album que vous aimez, écrivez-nous. Indiquer le modèle de l'appareil et la version d'iOS nous aide à trouver la cause plus vite.</p>
+  <h2>Questions fréquentes</h2>
+  <h3>Mes photos sont-elles envoyées ?</h3>
+  <p>Non. L'analyse des photos et la transcription vocale se font sur votre appareil. Shiguang n'a pas de serveur et ne collecte aucune donnée. Pour afficher les noms de lieux, seules les coordonnées approximatives des photos sont envoyées au service de cartes d'Apple. Voir la <a href="../privacy/">politique de confidentialité</a>.</p>
+  <h3>Pourquoi mes photos ne s'affichent-elles pas ?</h3>
+  <p>Shiguang a besoin d'accéder à votre photothèque. Allez dans Réglages &gt; Confidentialité et sécurité &gt; Photos &gt; Shiguang et choisissez Accès complet ou sélectionnez des photos. Sans accès, vous pouvez toujours lire l'album d'exemple inclus.</p>
+  <h3>Les albums prennent-ils beaucoup d'espace ?</h3>
+  <p>Non. Les albums pointent vers les photos de votre photothèque sans les copier. Supprimer un album laisse vos photos dans l'app Photos.</p>
+  <h3>Comment ajouter automatiquement de nouvelles photos à un album ?</h3>
+  <p>Lorsque vous créez un album à partir d'une catégorie intelligente, d'un lieu, de « Ce jour-là » ou d'un album partagé iCloud, activez « Ajouter automatiquement les nouvelles photos ». Les photos prises plus tard (ou ajoutées par la famille à l'album partagé) deviennent de nouvelles pages.</p>
+  <h3>De quoi ont besoin « Photos anciennes et récit » ?</h3>
+  <p>Le scan utilise l'appareil photo et le récit le microphone. Sur les appareils compatibles avec la transcription hors ligne, l'histoire devient du texte sur l'appareil ; sinon, seul l'enregistrement est conservé et vous pouvez saisir le texte. Les enregistrements restent sur cet appareil.</p>
+  <h3>Comment activer le grand texte pour un grand-parent ?</h3>
+  <p>Ouvrez un album, touchez Plus en haut à droite et choisissez Grand texte. Touchez un côté pour tourner la page ; touchez le X pour revenir à la lecture standard.</p>
+  <h3>Comment exporter ou imprimer un album ?</h3>
+  <p>Dans un album, touchez Plus &gt; Exporter et choisissez Vidéo ou PDF (6 × 9 pouces, prêt à imprimer comme un livre photo).</p>
+  <h3>Puis-je récupérer un album supprimé ?</h3>
+  <p>Oui. Les albums supprimés restent 30 jours dans « Supprimés récemment » en bas de l'étagère.</p>
+</section>
+
+<section class="policy lang-section" id="es" data-lang="es" lang="es" hidden>
+  <h1>Soporte</h1>
+  <p class="meta"><span>Contacto: <a href="mailto:stahere@icloud.com">stahere@icloud.com</a></span></p>
+  <p>Si algo no funciona, tienes una sugerencia o has creado un álbum que te gusta, escríbenos. Incluir el modelo del dispositivo y la versión de iOS nos ayuda a encontrar la causa más rápido.</p>
+  <h2>Preguntas frecuentes</h2>
+  <h3>¿Se suben mis fotos?</h3>
+  <p>No. El análisis de fotos y la transcripción de voz se realizan en tu dispositivo. Shiguang no tiene servidores y no recopila datos. Para mostrar nombres de lugares, solo se envían las coordenadas aproximadas de las fotos al servicio de mapas de Apple. Consulta la <a href="../privacy/">política de privacidad</a>.</p>
+  <h3>¿Por qué no veo mis fotos?</h3>
+  <p>Shiguang necesita acceso a tu fototeca. Ve a Ajustes &gt; Privacidad y seguridad &gt; Fotos &gt; Shiguang y elige Acceso completo o selecciona fotos. Sin acceso, aún puedes leer el álbum de ejemplo incluido.</p>
+  <h3>¿Los álbumes ocupan mucho espacio?</h3>
+  <p>No. Los álbumes apuntan a las fotos de tu fototeca en lugar de copiarlas. Si eliminas un álbum, tus fotos siguen en la app Fotos.</p>
+  <h3>¿Cómo añaden fotos nuevas automáticamente los álbumes?</h3>
+  <p>Cuando crees un álbum desde una categoría inteligente, un lugar, «Tal día como hoy» o un álbum compartido de iCloud, activa «Añadir fotos nuevas automáticamente». Las fotos que hagas después (o que la familia añada al álbum compartido) se convierten en páginas nuevas.</p>
+  <h3>¿Qué necesitan Fotos antiguas y narración?</h3>
+  <p>El escaneo usa la cámara y la narración el micrófono. En dispositivos compatibles con transcripción sin conexión, la historia se convierte en texto en el dispositivo; si no, solo se guarda la grabación y puedes escribir el texto. Las grabaciones se quedan en este dispositivo.</p>
+  <h3>¿Cómo configuro el texto grande para un abuelo?</h3>
+  <p>Abre cualquier álbum, toca Más en la esquina superior y elige Texto grande. Toca cualquier lado para pasar la página; toca la X para volver a la lectura normal.</p>
+  <h3>¿Cómo exporto o imprimo un álbum?</h3>
+  <p>En un álbum, toca Más &gt; Exportar y elige Vídeo o PDF (6 × 9 pulgadas, listo para imprimir como libro de fotos).</p>
+  <h3>¿Puedo recuperar un álbum eliminado?</h3>
+  <p>Sí. Los álbumes eliminados permanecen 30 días en «Eliminados recientemente», al final del estante.</p>
+</section>
+
+<section class="policy lang-section" id="pt-BR" data-lang="pt-BR" lang="pt-BR" hidden>
+  <h1>Suporte</h1>
+  <p class="meta"><span>Contato: <a href="mailto:stahere@icloud.com">stahere@icloud.com</a></span></p>
+  <p>Se algo não funcionar, você tiver uma sugestão ou tiver criado um álbum de que gosta, escreva para nós. Incluir o modelo do dispositivo e a versão do iOS ajuda a encontrar a causa mais rápido.</p>
+  <h2>Perguntas frequentes</h2>
+  <h3>Minhas fotos são enviadas?</h3>
+  <p>Não. A análise das fotos e a transcrição de voz acontecem no seu dispositivo. O Shiguang não tem servidores e não coleta dados. Para mostrar nomes de lugares, apenas as coordenadas aproximadas das fotos são enviadas ao serviço de mapas da Apple. Veja a <a href="../privacy/">política de privacidade</a>.</p>
+  <h3>Por que não vejo minhas fotos?</h3>
+  <p>O Shiguang precisa de acesso à sua fototeca. Vá em Ajustes &gt; Privacidade e Segurança &gt; Fotos &gt; Shiguang e escolha Acesso Total ou selecione fotos. Mesmo sem acesso, você ainda pode ler o álbum de exemplo incluído.</p>
+  <h3>Os álbuns ocupam muito espaço?</h3>
+  <p>Não. Os álbuns apontam para as fotos da sua fototeca em vez de copiá-las. Excluir um álbum mantém suas fotos no app Fotos.</p>
+  <h3>Como os álbuns adicionam fotos novas automaticamente?</h3>
+  <p>Ao criar um álbum a partir de uma categoria inteligente, um lugar, "Neste dia" ou um Álbum Compartilhado do iCloud, ative "Adicionar fotos novas automaticamente". As fotos tiradas depois (ou adicionadas pela família ao álbum compartilhado) viram páginas novas.</p>
+  <h3>O que Fotos Antigas e Narração precisa?</h3>
+  <p>A digitalização usa a câmera e a narração usa o microfone. Em dispositivos com transcrição offline, a história vira texto no dispositivo; caso contrário, só a gravação é mantida e você pode digitar o texto. As gravações ficam neste dispositivo.</p>
+  <h3>Como configuro o Texto Grande para um avô?</h3>
+  <p>Abra qualquer álbum, toque em Mais no canto superior e escolha Texto Grande. Toque em qualquer lado para virar a página; toque no X para voltar à leitura normal.</p>
+  <h3>Como exporto ou imprimo um álbum?</h3>
+  <p>Em um álbum, toque em Mais &gt; Exportar e escolha Vídeo ou PDF (6 × 9 polegadas, pronto para imprimir como um livro de fotos).</p>
+  <h3>Posso recuperar um álbum excluído?</h3>
+  <p>Sim. Álbuns excluídos ficam em "Excluídos Recentemente" na parte inferior da estante por 30 dias.</p>
+</section>
+
+<section class="policy lang-section" id="pt-PT" data-lang="pt-PT" lang="pt-PT" hidden>
+  <h1>Suporte</h1>
+  <p class="meta"><span>Contacto: <a href="mailto:stahere@icloud.com">stahere@icloud.com</a></span></p>
+  <p>Se algo não funcionar, tiver uma sugestão ou tiver criado um álbum de que gosta, escreva-nos. Incluir o modelo do dispositivo e a versão do iOS ajuda a encontrar a causa mais depressa.</p>
+  <h2>Perguntas frequentes</h2>
+  <h3>As minhas fotos são enviadas?</h3>
+  <p>Não. A análise das fotos e a transcrição de voz acontecem no seu dispositivo. O Shiguang não tem servidores e não recolhe dados. Para mostrar nomes de lugares, apenas as coordenadas aproximadas das fotos são enviadas ao serviço de mapas da Apple. Ver a <a href="../privacy/">política de privacidade</a>.</p>
+  <h3>Porque não vejo as minhas fotos?</h3>
+  <p>O Shiguang precisa de acesso à sua fototeca. Vá a Definições &gt; Privacidade e Segurança &gt; Fotos &gt; Shiguang e escolha Acesso Total ou selecione fotos. Mesmo sem acesso, pode continuar a ler o álbum de exemplo incluído.</p>
+  <h3>Os álbuns ocupam muito espaço?</h3>
+  <p>Não. Os álbuns apontam para as fotos da sua fototeca em vez de as copiar. Eliminar um álbum mantém as suas fotos na app Fotos.</p>
+  <h3>Como é que os álbuns adicionam fotos novas automaticamente?</h3>
+  <p>Ao criar um álbum a partir de uma categoria inteligente, de um lugar, de "Neste dia" ou de um Álbum Partilhado do iCloud, ative "Adicionar fotos novas automaticamente". As fotos tiradas depois (ou adicionadas pela família ao álbum partilhado) passam a ser páginas novas.</p>
+  <h3>O que é preciso para Fotos Antigas e Narração?</h3>
+  <p>A digitalização usa a câmara e a narração usa o microfone. Em dispositivos com transcrição offline, a história passa a texto no dispositivo; caso contrário, apenas a gravação é guardada e pode escrever o texto. As gravações ficam neste dispositivo.</p>
+  <h3>Como configuro o Texto Grande para um avô?</h3>
+  <p>Abra qualquer álbum, toque em Mais no canto superior e escolha Texto Grande. Toque em qualquer lado para virar a página; toque no X para voltar à leitura normal.</p>
+  <h3>Como exporto ou imprimo um álbum?</h3>
+  <p>Num álbum, toque em Mais &gt; Exportar e escolha Vídeo ou PDF (6 × 9 polegadas, pronto para imprimir como um livro de fotos).</p>
+  <h3>Posso recuperar um álbum eliminado?</h3>
+  <p>Sim. Os álbuns eliminados ficam em "Eliminados Recentemente" na parte inferior da estante durante 30 dias.</p>
+</section>
+
+<section class="policy lang-section" id="ru" data-lang="ru" lang="ru" hidden>
+  <h1>Поддержка</h1>
+  <p class="meta"><span>Контакты: <a href="mailto:stahere@icloud.com">stahere@icloud.com</a></span></p>
+  <p>Если что-то не работает, у вас есть предложение или вы создали альбом, который вам нравится, напишите нам. Укажите модель устройства и версию iOS — так мы быстрее найдём причину.</p>
+  <h2>Частые вопросы</h2>
+  <h3>Загружаются ли мои фотографии?</h3>
+  <p>Нет. Анализ фотографий и расшифровка речи выполняются на вашем устройстве. У Shiguang нет серверов, и мы не собираем данные. Чтобы показать названия мест, в службу карт Apple отправляются только приблизительные координаты фотографий. См. <a href="../privacy/">политику конфиденциальности</a>.</p>
+  <h3>Почему я не вижу свои фотографии?</h3>
+  <p>Shiguang нужен доступ к медиатеке. Откройте Настройки &gt; Конфиденциальность и безопасность &gt; Фото &gt; Shiguang и выберите «Полный доступ» или выберите фотографии. Без доступа вы всё равно можете читать встроенный пример альбома.</p>
+  <h3>Занимают ли альбомы много места?</h3>
+  <p>Нет. Альбомы ссылаются на фотографии в медиатеке, а не копируют их. Если удалить альбом, фотографии останутся в приложении «Фото».</p>
+  <h3>Как альбомы автоматически добавляют новые фотографии?</h3>
+  <p>Создавая альбом из умной категории, места, «В этот день» или общих альбомов iCloud, включите «Автоматически добавлять новые фотографии». Снятые позже фотографии (или добавленные семьёй в общий альбом) станут новыми страницами.</p>
+  <h3>Что нужно для «Старых фото и рассказа»?</h3>
+  <p>Для сканирования нужна камера, для рассказа — микрофон. На устройствах с офлайн-расшифровкой история превращается в текст на устройстве; иначе сохраняется только запись, а текст можно ввести вручную. Записи остаются на этом устройстве.</p>
+  <h3>Как включить крупный шрифт для бабушки или дедушки?</h3>
+  <p>Откройте любой альбом, нажмите «Ещё» в верхнем углу и выберите «Крупный шрифт». Нажимайте на любую сторону, чтобы перевернуть страницу; нажмите X, чтобы вернуться к обычному чтению.</p>
+  <h3>Как экспортировать или распечатать альбом?</h3>
+  <p>В альбоме нажмите «Ещё» &gt; «Экспорт» и выберите видео или PDF (6 × 9 дюймов, готово к печати как фотокнига).</p>
+  <h3>Можно ли восстановить удалённый альбом?</h3>
+  <p>Да. Удалённые альбомы хранятся 30 дней в разделе «Недавно удалённые» внизу полки.</p>
+</section>
+
 <footer>
   <p>拾光 · Shiguang</p>
 </footer>
 </main>
+<script>
+(() => {
+  const titles = {
+    en: "Shiguang Support",
+    "zh-Hans": "拾光 支持",
+    "zh-Hant": "拾光 支援",
+    ja: "Shiguang サポート",
+    ko: "Shiguang 지원",
+    de: "Shiguang Support",
+    fr: "Assistance Shiguang",
+    es: "Soporte de Shiguang",
+    "pt-BR": "Suporte do Shiguang",
+    "pt-PT": "Suporte do Shiguang",
+    ru: "Поддержка Shiguang"
+  };
+  const sections = Array.from(document.querySelectorAll(".lang-section"));
+  const select = document.getElementById("lang-select");
+  const aliases = { zh: "zh-Hans" };
+
+  function show(lang, push) {
+    if (!sections.some((section) => section.dataset.lang === lang)) lang = "en";
+    for (const section of sections) section.hidden = section.dataset.lang !== lang;
+    select.value = lang;
+    document.documentElement.lang = lang;
+    document.title = titles[lang] || titles.en;
+    if (push) history.replaceState(null, "", "#" + lang);
+  }
+
+  const hash = decodeURIComponent(location.hash.replace(/^#/, ""));
+  show(aliases[hash] || hash || "en", false);
+  select.addEventListener("change", () => show(select.value, true));
+})();
+</script>
 </body>
 </html>
